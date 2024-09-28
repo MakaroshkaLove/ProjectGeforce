@@ -1503,19 +1503,3 @@ hr {
     transform: translateX(-100%);
   }
 }
-
-@media (max-width: 768px) {
-  .homeAdvantages__btn1 {
-    padding: 3vw 6vw;
-    right: -20vw;
-    top: -60vh;
-    font-size: 1.5vw;
-  }
-  
-  .homeHero__btn {
-    padding: 3vw 6vw;
-    left: 10vw;
-    top: -60vh;
-    font-size: 1.5vw;
-  }
-}
