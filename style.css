@@ -1422,33 +1422,29 @@ hr {
 
 /*Анімація_1*/
 .carousel {
-  width: 100%;
+  width: 100%; /* Контейнер может оставаться гибким */
   overflow: hidden;
   position: absolute;
   top: 2390px;
-  /* Сховає частини зображень, що виходять за межі контейнера */
 }
 
 .carousel-track {
   display: flex;
   animation: scroll 60s linear infinite;
-  /* Безкінечний рух зображень */
 }
 
 .carousel-track img {
-  width: 60%;
+  width: 900px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
 @keyframes scroll {
   0% {
     transform: translateX(0);
-    /* Початкова позиція */
   }
 
   100% {
-    transform: translateX(-100%);
-    /* Зміщення вліво на 100% ширини треку */
+    transform: translateX(-100%); /* Ширина трека остается гибкой */
   }
 }
 
@@ -1458,60 +1454,52 @@ hr {
   overflow: hidden;
   position: absolute;
   top: 2480px;
-  /* Сховає частини зображень, що виходять за межі контейнера */
 }
 
 .carousel2 .carousel-track {
   display: flex;
-  animation: scroll-reverse 60s linear infinite;
-  /* Безкінечний рух зображень у зворотний бік */
+  animation: scroll-reverse 30s linear infinite;
 }
 
 .carousel2 .carousel-track img {
-  width: 60%;
+  width: 900px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
 @keyframes scroll-reverse {
   0% {
     transform: translateX(-100%);
-    /* Початкова позиція зліва */
   }
 
   100% {
     transform: translateX(0);
-    /* Кінцева позиція справа */
   }
 }
 
-/*Анімація_1*/
+/*Анімація_3*/
 .carousel3 {
   width: 100%;
   overflow: hidden;
   position: absolute;
   top: 2580px;
-  /* Сховає частини зображень, що виходять за межі контейнера */
 }
 
 .carousel3 .carousel-track {
   display: flex;
   animation: scroll-variation 60s linear infinite;
-  /* Відмінний варіант анімації */
 }
 
 .carousel3 .carousel-track img {
-  width: 60%;
+  width: 900px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
 @keyframes scroll-variation {
   0% {
     transform: translateX(0);
-    /* Початкова позиція */
   }
 
   100% {
     transform: translateX(-100%);
-    /* Зміщення вліво на 100% ширини треку */
   }
 }
