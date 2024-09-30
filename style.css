@@ -213,11 +213,17 @@ img {
   position: relative;
   right: -1000px;
   top: -2120px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .square img {
   max-width: 80%;
   max-height: 80%;
+}
+
+.square:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 p {
@@ -230,7 +236,7 @@ p {
 
 .text-custom a:hover {
   color: #000000;
-  /* Change color on hover */
+
 }
 
 .highlight {
@@ -296,12 +302,46 @@ p {
   background-position: right center;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
 
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #111;
+  opacity: 0; 
+  animation: fadeIn 2s forwards; 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1; 
+  }
+}
+.homeHero__title, .homeHero__p, .homeAdvantages__title, .homeAdvantages__p, .homeHero__btn, .homeHero__btn1 {
+  opacity: 0; 
+  animation: fadeInText 2s ease-out 0.5s forwards; 
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0; /* Невидимый */
+    transform: translateY(20px); /* Вниз на 20px */
+  }
+  100% {
+    opacity: 1; /* Делает полностью видимым */
+    transform: translateY(0); /* Возвращается в исходное положение */
+  }
 }
 
 .homeHero__title {
@@ -355,7 +395,6 @@ video {
   background-color: #1a1a1a;
   color: rgb(145, 145, 145);
   margin-right: 0px;
-  /* Убрал отступ справа */
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -366,11 +405,9 @@ video {
   position: relative;
   display: inline-block;
   margin-right: 10px;
-  /* Уменьшенный отступ между "Гайди" и "Языки" */
   z-index: 10;
 }
 
-/* Dropdown for "Языки" */
 .dropbtn2 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 16px;
@@ -395,7 +432,6 @@ video {
   position: relative;
   display: inline-block;
   margin-right: 10px;
-  /* Уменьшенный отступ перед навигацией */
   z-index: 10;
 }
 
@@ -403,7 +439,6 @@ video {
   position: relative;
   display: inline-block;
   margin-right: 10px;
-  /* Уменьшенный отступ перед навигацией */
   z-index: 10;
 
 }
@@ -443,12 +478,10 @@ video {
   display: block;
 }
 
-/* Header */
 .header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  /* Выравнивание по левому краю */
   background-color: #1a1a1a;
   padding: 10px 20px;
   color: white;
@@ -458,7 +491,6 @@ video {
   display: flex;
   align-items: center;
   margin-right: 15px;
-  /* Отступ от логотипа */
 }
 
 .logo-img {
@@ -489,7 +521,6 @@ video {
   display: flex;
   align-items: center;
   margin-left: auto;
-  /* Переносит авторизацию вправо */
   z-index: 10;
 }
 
@@ -615,36 +646,26 @@ video {
   border: none;
   cursor: pointer;
   position: relative;
-  /* Ð—Ð¼Ñ–Ð½Ð¸Ð² Ð· absolute Ð½Ð° relative */
   left: 140px;
-  /* Ð¡ÐºÐ¸Ð´Ð°Ñ”Ð¼Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ left */
   top: 30px;
-  /* Ð¡ÐºÐ¸Ð´Ð°Ñ”Ð¼Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ top */
 }
 
 .dropdown {
   position: absolute;
-  /* Ð¦Ðµ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶Ðµ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÑŽÐ²Ð°Ñ‚Ð¸ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð²ÑÑ–Ñ”Ñ— dropdown ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð¸ */
   left: 492px;
-  /* ÐŸÐ¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð²ÑÑŒÐ¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   top: 2838px;
-  /* ÐŸÐ¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð²ÑÑŒÐ¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: relative;
-  /* Ð’Ñ–Ð´Ð½Ð¾ÑÐ½Ðµ Ð¿Ð¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð´Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐ¸ */
   background-color: #1a1a1a;
   min-width: 100px;
-  /* Ð¤Ñ–ÐºÑÐ¾Ð²Ð°Ð½Ð° ÑˆÐ¸Ñ€Ð¸Ð½Ð° ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   top: 100%;
-  /* Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ñ–Ð´ ÐºÐ½Ð¾Ð¿ÐºÐ¾ÑŽ */
   left: 0;
-  /* Ð’Ð¸Ñ€Ñ–Ð²Ð½ÑŽÐ²Ð°Ð½Ð½Ñ Ð· ÐºÐ½Ð¾Ð¿ÐºÐ¾ÑŽ */
 }
 
 .dropdown-content a {
@@ -830,36 +851,28 @@ video {
   border: none;
   cursor: pointer;
   position: relative;
-  /* Ð—Ð¼Ñ–Ð½Ð¸Ð² Ð· absolute Ð½Ð° relative */
   left: 140px;
-  /* Ð¡ÐºÐ¸Ð´Ð°Ñ”Ð¼Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ left */
   top: 30px;
-  /* Ð¡ÐºÐ¸Ð´Ð°Ñ”Ð¼Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ top */
+
 }
 
 .dropdownn {
   position: absolute;
-  /* Ð¦Ðµ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶Ðµ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÑŽÐ²Ð°Ñ‚Ð¸ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð²ÑÑ–Ñ”Ñ— dropdown ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð¸ */
   left: 1252px;
-  /* ÐŸÐ¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð²ÑÑŒÐ¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   top: 2838px;
-  /* ÐŸÐ¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð²ÑÑŒÐ¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   display: inline-block;
 }
 
 .dropdownn-content {
   display: none;
   position: relative;
-  /* Ð’Ñ–Ð´Ð½Ð¾ÑÐ½Ðµ Ð¿Ð¾Ð·Ð¸Ñ†Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð´Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐ¸ */
   background-color: #1a1a1a;
   min-width: 100px;
-  /* Ð¤Ñ–ÐºÑÐ¾Ð²Ð°Ð½Ð° ÑˆÐ¸Ñ€Ð¸Ð½Ð° ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   top: 100%;
-  /* Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ñ–Ð´ ÐºÐ½Ð¾Ð¿ÐºÐ¾ÑŽ */
   left: 0;
-  /* Ð’Ð¸Ñ€Ñ–Ð²Ð½ÑŽÐ²Ð°Ð½Ð½Ñ Ð· ÐºÐ½Ð¾Ð¿ÐºÐ¾ÑŽ */
+
 }
 
 .dropdownn-content a {
@@ -1033,9 +1046,9 @@ video {
 
 .footer3 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   text-transform: uppercase;
@@ -1051,14 +1064,14 @@ video {
 
 .footer3:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer4 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1073,14 +1086,14 @@ video {
 
 .footer4:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer5 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1095,14 +1108,14 @@ video {
 
 .footer5:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer6 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1117,7 +1130,7 @@ video {
 
 .footer6:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer7 {
@@ -1130,9 +1143,9 @@ video {
 
 .footer8 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1147,14 +1160,14 @@ video {
 
 .footer8:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer9 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1169,7 +1182,7 @@ video {
 
 .footer9:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer10 {
@@ -1182,9 +1195,9 @@ video {
 
 .footer11 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1199,14 +1212,14 @@ video {
 
 .footer11:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer12 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1221,14 +1234,14 @@ video {
 
 .footer12:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer13 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1243,14 +1256,14 @@ video {
 
 .footer13:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer14 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1265,7 +1278,7 @@ video {
 
 .footer14:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 .footer15 {
@@ -1278,9 +1291,9 @@ video {
 
 .footer16 {
   color: #696969;
-  /* Цвет текста */
+
   font-size: 14px;
-  /* Размер текста */
+
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1295,14 +1308,11 @@ video {
 
 .footer16:hover {
   color: #525252;
-  /* Меняем цвет текста */
 }
 
 .footer17 {
   color: #696969;
-  /* Цвет текста */
   font-size: 14px;
-  /* Размер текста */
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1317,14 +1327,11 @@ video {
 
 .footer17:hover {
   color: #525252;
-  /* Меняем цвет текста */
 }
 
 .footer18 {
   color: #696969;
-  /* Цвет текста */
   font-size: 14px;
-  /* Размер текста */
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1339,7 +1346,7 @@ video {
 
 .footer18:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 hr {
@@ -1400,9 +1407,7 @@ hr {
 
 .win {
   color: #696969;
-  /* Цвет текста */
   font-size: 14px;
-  /* Размер текста */
   font-weight: bold;
   padding: 20px 0px;
   line-height: 1;
@@ -1417,7 +1422,7 @@ hr {
 
 .win:hover {
   color: #525252;
-  /* Меняем цвет текста */
+
 }
 
 /*Анімація_1*/
