@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення Ігрового Профілю</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #252323;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #afafaf;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background-image: linear-gradient(to right, #82bb17 0%, #5e9205 51%, #81bb16 100%);
+            background-size: 200% auto;
+            box-shadow: 0 0 20px #0000001a;
+            transition: .5s;
+            color: #fff;
+            font-size: 14px;
+            width: 100%;
+        }
+        button:hover {
+            background-position: right center;
+        }
+        .error-message {
+            color: #d9534f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Створення Ігрового Профілю</h1>
+        <form id="profile-form">
+            <input type="text" name="username" id="username" placeholder="Ім'я користувача" required>
+            <input type="email" name="email" id="email" placeholder="Електронна пошта" required>
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Підтвердження пароля" required>
+            <button type="submit">Створити ігровий профіль</button>
+            <p id="error-message" class="error-message"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('profile-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            var errorMessage = document.getElementById('error-message');
+            
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Паролі не збігаються!';
+            } else {
+                errorMessage.textContent = ''; 
+
+                // Сохранение никнейма в localStorage
+                localStorage.setItem('username', username);
+
+                alert('Ваш обліковий запис успішно створено!\nІм\'я користувача: ' + username + '\nЕлектронна пошта: ' + email);
+
+                setTimeout(function() {
+                    window.location.href = 'index.html'; 
+                }, 1000); 
+            }
+        });
+    </script>
+</body>
+</html>

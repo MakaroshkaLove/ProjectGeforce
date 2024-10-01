@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proverka</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #252323;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #afafaf;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 20px 70px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #82bb17 0%, #5e9205 51%, #81bb16 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #0000001a;
+    transition: .5s;
+    color: #fff;
+    font-size:10px;
+    width: 300px;
+        }
+        button:hover {
+            background-position: right center;
+        }
+        .captcha-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .captcha-question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .remaining-questions {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+        .error-message {
+            color: #d9534f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Перевірка на бота</h1>
+        <div id="questionContainer">
+            <div class="captcha-container">
+                <span class="captcha-question" id="captchaQuestion"></span>
+                <input type="text" id="captchaAnswer" placeholder="Введіть відповідь">
+            </div>
+            <button id="submitBtn">Відповісти</button>
+            <div id="remainingQuestions" class="remaining-questions"></div>
+        </div>
+        <div id="resultMessage" class="error-message"></div>
+    </div>
+
+    <script>
+        const questions = [];
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+
+        // Генерація 5 простих математичних питань
+        for (let i = 0; i < 5; i++) {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const answer = num1 + num2;
+            questions.push({ question: `${num1} + ${num2} = `, answer });
+        }
+
+        function showQuestion() {
+            document.getElementById('captchaQuestion').textContent = questions[currentQuestion].question;
+            document.getElementById('captchaAnswer').value = ''; // Очищення поля введення
+            document.getElementById('resultMessage').textContent = ''; // Очищення повідомлення про помилку
+            updateRemainingQuestions(); 
+            // Оновлення питань, що залишилися
+        }
+
+        function updateRemainingQuestions() {
+            const remaining = questions.length - currentQuestion;
+            document.getElementById('remainingQuestions').textContent = `Залишилося питань: ${remaining}`;
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const userAnswer = parseInt(document.getElementById('captchaAnswer').value);
+
+            if (userAnswer === questions[currentQuestion].answer) {
+                correctAnswers++;
+                currentQuestion++;
+
+                if (currentQuestion < 5) {
+                    showQuestion(); // Показ наступного питання
+                } else {
+                
+                    if (correctAnswers === 5) {
+                    
+                        window.location.href = 'profile.html';
+                    }
+                }
+            } else {
+                
+                document.getElementById('resultMessage').textContent = 'Відповідь неправильна. Почніть з початку.';
+                setTimeout(() => {
+                    correctAnswers = 0;
+                    currentQuestion = 0;
+                    showQuestion(); // Показ першого питання
+                }, 2000); // Затримка 2 секунди 
+            }
+        });
+
+        showQuestion(); // Показ першого питання
+    </script>
+</body>
+</html>
