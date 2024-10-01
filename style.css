@@ -1,3 +1,4 @@
+
 .container {
   background-color: #67c200;
   color: black;
@@ -1430,7 +1431,7 @@ hr {
   width: 100%; /* Контейнер может оставаться гибким */
   overflow: hidden;
   position: absolute;
-  top: 2390px;
+  top: 2360px;
 }
 
 .carousel-track {
@@ -1439,7 +1440,7 @@ hr {
 }
 
 .carousel-track img {
-  width: 900px; /* Фиксированная ширина */
+  width: 1250px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
@@ -1458,16 +1459,16 @@ hr {
   width: 100%;
   overflow: hidden;
   position: absolute;
-  top: 2480px;
+  top: 2470px;
 }
 
 .carousel2 .carousel-track {
   display: flex;
-  animation: scroll-reverse 30s linear infinite;
+  animation: scroll-reverse 45s linear infinite;
 }
 
 .carousel2 .carousel-track img {
-  width: 900px; /* Фиксированная ширина */
+  width: 1250px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
@@ -1495,7 +1496,7 @@ hr {
 }
 
 .carousel3 .carousel-track img {
-  width: 900px; /* Фиксированная ширина */
+  width: 1250px; /* Фиксированная ширина */
   flex-shrink: 0;
 }
 
@@ -1509,18 +1510,4 @@ hr {
   }
 }
 
-@media (max-width: 768px) {
-  .homeAdvantages__btn1 {
-    padding: 3vw 6vw;
-    right: -20vw;
-    top: -60vh;
-    font-size: 1.5vw;
-  }
-  
-  .homeHero__btn {
-    padding: 3vw 6vw;
-    left: 10vw;
-    top: -60vh;
-    font-size: 1.5vw;
-  }
-}
+
